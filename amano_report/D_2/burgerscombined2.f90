@@ -21,9 +21,9 @@ program burgers
     !======parameters==========
         xmax = 2.0d0
         xmin = -2.0d0
-        meshnum_x = 100
+        meshnum_x = 200
         nu = 0.2d0
-        epsilon = 0.05d0
+        epsilon = 0.2d0
         numstep = 100000
         outputstep = 2
     !==========================
@@ -52,7 +52,7 @@ program burgers
             !出力
             if (mod(istep,outputstep)==0) then
                 write(*,*) istep , "out of" , numstep , "time:",time,"filenum",ifile
-                write(filename,fmt='("./dataout/burgersmesh100nu0d05",i6.6,".dat")') ifile
+                write(filename,fmt='("./dataout/burgersmesh200nu0d2",i6.6,".dat")') ifile
                 open(10,file=filename,status='replace',action='write')
                 write(10,*) "time:x:u_exact(x):u_upwind(x):u_lax(x)"
                 do ix = 1,size(x)

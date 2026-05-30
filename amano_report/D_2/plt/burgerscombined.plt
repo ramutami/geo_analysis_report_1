@@ -2,7 +2,7 @@ reset
 
 # fortranファイルの出力を見て、ここを書き換えること！
     first_filenum = 0
-    last_filenum = 1500
+    last_filenum = 750
 #
 
 
@@ -37,18 +37,18 @@ t=0
 do for [n=first_filenum:last_filenum]{
 
     imageout_name = sprintf("../imageout/burgerscombined%06d.png", n)
-    file_in_name = sprintf("../dataout/burgersmesh200nu0d2%06d.dat", n)
+    file_in_name = sprintf("../dataout/burgersmesh100nu0d05%06d.dat", n)
     set output imageout_name                  
     set yrange [*:*]
     stats file_in_name using 1 every ::1::2 nooutput
     t = STATS_min
     set label 1 sprintf("t = %.4f", t) at graph 0.95, 0.95 right front
     set yrange [-0.2:1.4]
-    set title "ε=0.2 meshnum=200"
+    set title "ε=0.05 meshnum=100"
     plot\
     file_in_name using 2:3 every ::1 with lines lc rgb c1 lw 2 title 'exact' ,\
     file_in_name using 2:4 every ::1 with lines lc rgb c2 lw 2 title '1st order upwind' ,\
-    file_in_name using 2:5 every ::1 with lines lc rgb c6 lw 2 title '2 step Lax-Wendroff' 
+    file_in_name using 2:5 every ::1 with lines lc rgb c3 lw 2 title '2 step Lax-Wendroff' 
     print n,'out of' , last_filenum
 }
 

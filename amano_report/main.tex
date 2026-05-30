@@ -1,0 +1,305 @@
+%--------------------------------------------------------------
+\documentclass[ja=standard,xelatex]{bxjsarticle}
+%--------------------------------------------------------------
+
+%--------------------------------------------------------------
+%packages%{
+% #region
+\usepackage{bigints}
+\usepackage{changepage}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage[bottom]{footmisc}
+\usepackage{subcaption}
+\usepackage{zxjatype}
+\usepackage[hiragino]{zxjafont} 
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{nccmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{tocloft}
+\usepackage{ascmac}
+\usepackage{latexsym}
+\usepackage[version=4]{mhchem}
+\usepackage{listings, xcolor}
+\usepackage{mathtools}
+\usepackage[colorlinks=true, linkcolor=blue , citecolor = blue]{hyperref}
+\usepackage{array}
+\usepackage{url}
+\usepackage[english]{babel}
+\usepackage[square,numbers]{natbib}
+\usepackage{physics}
+\usepackage{caption}
+\usepackage{ulem}
+\usepackage[section]{placeins}
+\usepackage{xeCJKfntef}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{mathcomp}
+\usepackage{IEEEtrantools}
+\usepackage{flafter}
+\usepackage{setspace}
+% #endregion
+%--------------------------------------------------------------%}
+
+%--------------------------------------------------------------
+%define%{
+% #region
+
+%%skip,space関係
+\newcommand{\vs}[1]{\vskip#1\baselineskip}
+\newcommand{\parlskip}[1]{\par\setlength{\leftskip}{#1pt}}
+
+%equation環境
+\newcommand{\eqn}[1]{\begin{equation*}{#1}\end{equation*}}
+\newcommand{\neqn}[1]{\begin{equation}{#1}\end{equation}}
+\newcommand{\leqn}[2]{\begin{fleqn}[#1pt]\begin{equation*}{#2}\end{equation*}\end{fleqn}[#1pt]}
+\newcommand{\leqnarray}[2]{\begin{fleqn}[#1pt]\begin{eqnarray*}{#2}\end{eqnarray*}\end{fleqn}}
+\newcommand{\eqns}[2]{\begin{equation*}\begin{array}{#1}#2\end{array}\end{equation*}}
+\newcommand{\neqns}[2]{\begin{IEEEeqnarray}{#1}#2\end{IEEEeqnarray}}
+\newcommand{\neqnarray}[1]{\begin{eqnarray}#1\end{eqnarray}}
+
+%定理・定義・証明等の記述（数学）
+\newcommand{\setting}[1]{\vs{0.3}\underline{\textbf{Setting}}\vs{0.3}\parlskip{20}{#1}\parlskip{0}}
+\newcommand{\thm}[1]{\vs{0.3}\underline{\textbf{Thm}}\vs{0.3}\parlskip{20}{#1}\parlskip{0}}
+\newcommand{\Def}[1]{\vs{0.3}\underline{\textbf{Def}}\vs{0.3}\parlskip{20}{#1}\parlskip{0}}
+\newcommand{\rem}[1]{\vs{0.5}\large{\underline{{\textit{remark}}}}\normalsize\vs{0.5}{#1}}
+\newcommand{\Proof}[1]{\vs{0.5}\large{\underline{\textit{Proof}}}\normalsize\vs{0.5}{#1}\setcounter{equation}{0}}
+\newcommand{\free}[2]{\vs{0.5}\large{\underline{\textit{#1}}}\normalsize\vs{0.5}{#2}\setcounter{equation}{0}}
+
+%tinysections
+\newcommand{\tinysection}[3]{\vs{0.5}\large\underline{\textbf{(#1)：#2}}\normalsize\vs{0.5}{#3}}
+\newcommand{\tinytinysection}[4]{\vs{0.3}\normalsize{\underline{\textbf{(#1.#2)：#3}}}\vs{0.3}{#4}}
+\newcommand{\tinytinytinysection}[5]{\vs{0.2}\normalsize{\underline{(#1.#2.#3)：#4}}\vs{0.2}{#5}}
+
+%微分
+\newcommand{\dif}[2]{\dfrac{d#1}{d#2}}
+\newcommand{\difop}[1]{\dfrac{d}{d#1}}
+\newcommand{\lagdif}[2]{\frac{D#1}{D#2}}
+
+%偏微分
+\newcommand{\pdif}[2]{\dfrac{\partial{#1}}{\partial#2}}
+\newcommand{\pdifop}[1]{\dfrac{\partial}{\partial#1}}
+\newcommand{\pdifl}[1]{\partial_{#1}}
+\newcommand{\pdiftwice}[2]{\dfrac{\partial^{2}{#1}}{\partial {#2} ^{2}}}
+
+%積分
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\diint}{\displaystyle\iint}
+\newcommand{\diiint}{\displaystyle\iiint}
+
+%総和
+\newcommand{\sumn}[2]{\sum_{n=#1}^{#2}}
+\newcommand{\sumi}[2]{\sum_{i=#1}^{#2}}
+\newcommand{\sumj}[2]{\sum_{j=#1}^{#2}}
+\newcommand{\sumk}[2]{\sum_{k=#1}^{#2}}
+\newcommand{\suml}[2]{\sum_{l=#1}^{#2}}
+\newcommand{\summ}[2]{\sum_{m=#1}^{#2}}
+\newcommand{\sump}[2]{\sum_{p=#1}^{#2}}
+\newcommand{\sumq}[2]{\sum_{q=#1}^{#2}}
+\newcommand{\sumfr}[3]{\sum_{#1=#2}^{#3}}
+\newcommand{\dsum}{\displaystyle\sum}
+
+%ベクトル
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\vecp}[2]{\mathbf{#1}^{#2}}
+\newcommand{\vecn}[1]{\mathbf{#1}^n}
+\newcommand{\vecm}[1]{\mathbf{#1}^m}
+\newcommand{\pvect}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+%括弧
+\newcommand{\bracketnormal}[1]{\left(#1\right)}
+\newcommand{\curlybracket}[1]{\left\{#1\right\}}
+
+%ε-δ論法
+\newcommand{\epsilondelta}[4]{\forall\;\epsilon>0,\exists\delta\;\; s.t, \;\; 0<\left| #1-#2 \right|<\delta \Rightarrow \left| #3(#1)-#4\right|<\epsilon}
+
+%その他
+\newcommand{\realpower}[1]{\mathbb{R}^{#1}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Bf}[1]{\mathbf{#1}}
+\newcommand{\limit}[2]{\lim_{#1 \to #2}}
+\newcommand{\absdefined}[1]{\left| #1 \right|}
+\newcommand{\map}[5]{#1:#2\to#3;\;\;#4\mapsto#5}
+\newcommand{\inner}[1]{\left\langle #1 \right\rangle}
+\newcommand{\vertline}[2]{\vs{0}\begin{center}\rule{#1\textwidth}{#2pt}\end{center}\vs{0}}
+\newcommand{\coord}[2]{\left(#1\;,\;#2\right)}
+\newcommand{\scipow}[1]{\times 10^{#1}}
+\newcommand{\labeqn}[1]{\label{eqn:#1}}
+\newcommand{\labfig}[1]{\label{fig:#1}}
+\newcommand{\refeqn}[1]{（\ref{eqn:#1}）}
+\newcommand{\reffig}[1]{Figure\ref{fig:#1}}
+
+% #endregion
+%--------------------------------------------------------------%}
+
+%--------------------------------------------------------------
+%title,author,etc%{
+% #region
+\title{地球物理数値解析レポート課題（天野教員担当分）}
+\author{05-242628三田村彰大}
+\date{}
+% #endregion
+%--------------------------------------------------------------%}
+
+\begin{document}
+
+%--------------------------------------------------------------
+% #region
+%code_area_settings%{
+\lstset{
+    basicstyle = {\ttfamily\small}, % 基本的なフォントスタイル
+    frame = {tbrl}, % 枠線の枠線。t: top, b: bottom, r: right, l: left
+    breaklines = true, % 長い行の改行
+    numbers = left, % 行番号の表示。left, right, none
+    showspaces = false, % スペースの表示
+    showstringspaces = false, % 文字列中のスペースの表示
+    showtabs = false, %　タブの表示
+    keywordstyle = \color{blue}, % キーワードのスタイル。intやwhileなど
+    commentstyle = {\color[HTML]{1AB91A}}, % コメントのスタイル
+    identifierstyle = \color{black}, % 識別子のスタイル　関数名や変数名
+    stringstyle = \color{brown}, % 文字列のスタイル
+    captionpos = t % キャプションの位置 t: 上、b: 下
+}
+\captionsetup*[lstlisting]{labelformat=empty}
+% #endregion
+%--------------------------------------------------------------%}
+
+%--------------------------------------------------------------
+%document_settings%{
+% #region
+\setcounter{tocdepth}{3}
+\setlength{\parindent}{0pt}
+\setlength{\abovedisplayskip}{15pt}
+\setlength{\belowdisplayskip}{15pt}
+\setlength{\abovedisplayshortskip}{15pt}
+\setlength{\belowdisplayshortskip}{15pt}
+\setlength{\baselineskip}{15pt}
+\newgeometry{top=25truemm,bottom=25truemm,left=20truemm,right=20truemm}
+\renewcommand{\arraystretch}{1.5}
+\bibliographystyle{abbrvnat}
+\setlength{\columnseprule}{1pt}
+%asm_settings
+\theoremstyle{definition}
+\newtheorem{prop}{proposition}[section]
+%subfigure_settings
+\captionsetup*[subfigure]{position=bottom}
+\captionsetup*[figure]{labelfont=bf}
+\captionsetup*[table]{labelfont=bf}
+%footnote_settings
+\setlength{\footnotesep}{0.4\baselineskip} % 脚注どうしの間隔
+\makeatletter
+\renewcommand\@makefntext[1]{%
+  % ---- 脚注本文の段落設定（同一脚注内） ----
+  \setlength{\parindent}{0pt}%
+  \setlength{\parskip}{0.4\baselineskip}%
+  % ---- ぶら下げ＋マーク表示 ----
+  \noindent
+  \hb@xt@1.8em{\hss\@makefnmark}%
+  \hspace{0.4em}%
+  \hangindent=2.2em%
+  \hangafter=1%
+  #1%
+}
+\renewcommand{\footnoterule}{%
+  \kern -3pt
+  \hrule width 1.0\linewidth
+  \kern 5pt
+}
+\makeatother
+\makeatletter
+\renewcommand{\bibsection}{} %"References" 見出しを無効化
+\makeatother
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{%
+  \par\pushQED{\qed}\normalfont
+  \trivlist
+  \item[\hskip\labelsep\bfseries #1\@addpunct{.}]%
+  \ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+% #endregion
+%--------------------------------------------------------------%}
+
+%--------------------------------------------------------------
+%maketitle_makehedding_tableofcontents%{
+% #region
+\maketitle
+
+\hrule
+
+\begin{description}[
+  labelwidth=4.5cm,
+  labelsep=0.5cm,
+  leftmargin=5.0cm,
+  style=multiline
+]
+  \item[数値計算結果の動画置き場：] \href{https://shota-mitamura.com/works/geo_analysiskadai1/kadai/}{https://shota-mitamura.com/works/geo_analysiskadai1/kadai/}
+  \item[コード置き場：] \href{https://github.com/ramutami/modeling_mitamura}{https://github.com/ramutami/modeling\_mitamura}
+  \item[AIとのチャットログ：] \href{https://chatgpt.com/g/g-p-69fabe32fd9c81919d69b22d4294ca7e-konhiyutakurahuikusulun-ke-ti/project}{https://chatgpt.com/g/g-p-69fa...}
+\end{description}
+
+\hrule
+\vs{1}
+
+
+\tableofcontents
+
+% #endregion
+%--------------------------------------------------------------%}
+
+%start_document
+\section{課題A}
+\section{課題B}
+\begin{spacing}{2.0}
+（B-1）$u\bracketnormal{x,t} = u_0\bracketnormal{x-tc}$　（B-2）$\pdif{u}{t} = \dfrac{u_i^{n+1}-u_i^n}{\Delta t}$　（B-3）$\pdif{u}{x}=\dfrac{u_{i+1}^n-u_{i-1}^n}{2\Delta x}$　
+\vs{0}
+（B-4）$u_i^{n+1} = u_i^n - \dfrac{c\Delta t}{2\delta x}\bracketnormal{u_i^{n+1}-u_{i-1}^n} $　（B-5）無条件不安定　
+\vs{0}（B-6）$0\leq \nu \leq 1$なら安定、ただし$\nu = \dfrac{c\Delta t}{\Delta x}$　（B-7）$-1\leq \nu \leq 0$なら安定、ただし$\nu = \dfrac{c\Delta t}{\Delta x}$　
+\vs{0}
+\end{spacing}
+（B-8）数値計算スキームが安定となるためには、物理的な情報の伝播がすでに済んでいる位置での情報を使って求めたい位置での時間ステップ更新を行う必要がある。
+\begin{spacing}{2.0}
+（B-9）位相誤差　（B-10）位相速度のズレが大きくなる　（B-11）$\dfrac{1}{2}c^2 \pdiftwice{u}{x}\Delta t$　（B-12）逆拡散　
+\vs{0}
+（B-13）数値拡散の項（あるいは、$\curlybracket{\dfrac{1}{2}\nu ^2\bracketnormal{u_{i+1}^n - 2u_{i}^n+u_{i-1}^n}}$の項）　（B-14）数値振動　
+\vs{0}
+（B-15）Godunovの定理　（B-16）人工粘性　（B-17）積分　（B-18）保存則が成立　（B-19）特性量　
+\vs{0}
+（B-20）$\dif{x}{t}=\lambda\bracketnormal{x}$　（B-21）線形移流方程式が$\pdif{u}{t}+c\pdif{u}{x}$と書き表される時、移流速度$c$　（B-22）物理量$u$　
+\vs{0}
+（B-23）２つの特性量の値を持つことが必要　（B-24）衝撃波　（B-25）粘性（数値拡散）　（B-26）弱解　
+\vs{0}
+（B-27）エントロピー条件　（B-28）左向き（負向き）の音波　（B-29）エントロピー波　（B-30）右向き（正向き）の音波
+\end{spacing}
+
+\section{課題D-1}
+　$x>0$向きの移流速度をもつ線形移流方程式を考えることにする。すなわち次の方程式を考える。
+\neqn{
+  \pdif{u}{t} + c\pdif{u}{x} = 0 \quad \bracketnormal{c>0}
+}
+ただし$c$は計算に際して適宜定めるものとする。
+\vs{0}
+　また、今回は一次元風上差分とLax-Wendroffを用いて上式を解くことを考える。具体的には、空間方向に幅$\Delta x$で$i=1,2,\ldots$と離散化し、時間方向に幅$\Delta t$で$n=0,1,\ldots$と離散化する時、一次元風上差分及びLax-Wendroffは（$c>0$よりFTBSとなるので）次のようなスキームとなる。
+\neqns{ll}{
+  \text{FTBS:}\quad & u_i^{n+1} = u_i^n - \dfrac{c\Delta t}{\Delta x}\bracketnormal{u_i^n - u_{i-1}^{n}}\\[5pt]
+  \text{Lax-Wendroff:}\quad & u_i^{n+1} = u_i^n - \dfrac{c\Delta t}{2\Delta x}\bracketnormal{u_{i+1}^n - u_{i-1}^{n}} + \dfrac{1}{2}\bracketnormal{\dfrac{c\Delta t}{\Delta x}}^2 \bracketnormal{u_{i+1}^n - 2u_i^n + u_{i-1}^n}
+}
+　実際の計算においては、$c=0.5$と定め、適当に定めた格子幅$\Delta x$に対しCFL条件を満たすように（すなわち$c\Delta t/\Delta x <1 $となるように）$\Delta t$を定めた。\footnote{
+  具体的には、$\Delta x=0.01$、$c\Delta t/\Delta x = 1/3$とした。
+}
+
+
+\section{課題D-2}
+
+\end{document}
+
+
