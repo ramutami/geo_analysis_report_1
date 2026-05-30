@@ -2,17 +2,17 @@ reset
 
 # fortranファイルの出力を見て、ここを書き換えること！
     first_filenum = 0
-    last_filenum = 200
+    last_filenum = 375
 #
 
 
-set xrange [-1:1]
+set xrange [-2:2]
 set xtics 0.5
 set xlabel "x"
 set ytics 0.5
 set ylabel "u"
 set grid 
-#set key top right                         
+set key top left                      
 #set key spacing 1.2
 set key reverse Left
 set key offset 1,-2 
@@ -36,18 +36,18 @@ t=0
 
 do for [n=first_filenum:last_filenum]{
 
-    imageout_name = sprintf("../imageout/image_upwind%06d.png", n)
-    file_in_name = sprintf("../dataout/burgers%06d.dat", n)
+    imageout_name = sprintf("../imageout/burgersupwind3%06d.png", n)
+    file_in_name = sprintf("../dataout/burgers_mesh50epsilon0d05%06d.dat", n)
     set output imageout_name                  
     set yrange [*:*]
     stats file_in_name using 1 every ::1::2 nooutput
     t = STATS_min
     set label 1 sprintf("t = %.4f", t) at graph 0.95, 0.95 right front
-    set yrange [-2:2]
+    set yrange [-0.2:1.4]
     plot\
-    file_in_name using 2:3 every ::1 with lines lc 'black' lw 1 title 'exact solution',\
-    file_in_name using 2:6 every ::1 with lines lc rgb c7 lw 1 title 'FTCS'
-    print t
+    file_in_name using 2:3 every ::1 with lines lc rgb c1 lw 2 title 'exact' ,\
+    file_in_name using 2:4 every ::1 with lines lc rgb c8 lw 2 title 'upwind, meshnum=50' 
+    print n,'out of' , last_filenum
 }
 
 

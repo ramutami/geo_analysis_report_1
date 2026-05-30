@@ -2,7 +2,7 @@ reset
 
 # fortranファイルの出力を見て、ここを書き換えること！
     first_filenum = 0
-    last_filenum = 500
+    last_filenum = 3500
 #
 
 
