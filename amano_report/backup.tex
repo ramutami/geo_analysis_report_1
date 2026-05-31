@@ -238,7 +238,7 @@
 % #region
 \maketitle
 
-
+\hrule
 
 \begin{description}[
   labelwidth=10.5cm,
@@ -250,25 +250,17 @@
   \item[コード置き場：] \href{https://github.com/ramutami/numeric_geophysics_report1}{https://github.com/ramutami/numeric\_geophysics\_report1}
 \end{description}
 
+\hrule
+\vs{1}
 
-\vs{5}
+
 \tableofcontents
-\vs{3}
-※解いた問題：課題A、課題B、課題D-1、課題D-2
-\newpage
+
 % #endregion
 %--------------------------------------------------------------%}
 
 %start_document
 \section{課題A}
-\subsection*{全体の感想}
-　それぞれのスキームがどのような発想から生まれるかといったことが丁寧に解説されたため、非常に分かりやすかった。また課題で数値計算スキームを可視化したのがとても楽しかった。
-\subsection*{線形問題のパートについて}
-　スキームの比較が非常に面白かった。特に数値拡散まわり（Lax-Wendroffや人工粘性など）の話は明快でよく理解することができたように思う。ただ、保存スキームのあたりは最初は少し理解に苦しんだ。（有限体積法を知らなかった為だと思われる。）
-\subsection*{非線形問題のパートについて}
-　Riemann問題の話は非常に面白かった。ただしその前段階の弱解やエントロピー条件などの話は難しいと感じた。元の微分方程式が滑らかな関数の範囲でとけない時に積分系を満たす解から物理的に適切な解を持ってくるという発想は理屈としては納得できるが、厳密になぜそのやり方で正しい解を拾ってこれるのかが少しモヤモヤした。
-　\vs{0}
-　ただ、euler方程式周りの話は非常にわかりやすかった。（元々馴染みのある方程式だったからかもしれないが…）できればレポートのeuler方程式の問題も解きたかったが、時間が足りなくて断念してしまったのが悔やまれる。
 \section{課題B}
 \begin{spacing}{2.0}
 （B-1）$u\bracketnormal{x,t} = u_0\bracketnormal{x-tc}$　（B-2）$\pdif{u}{t} = \dfrac{u_i^{n+1}-u_i^n}{\Delta t}$　（B-3）$\pdif{u}{x}=\dfrac{u_{i+1}^n-u_{i-1}^n}{2\Delta x}$　
@@ -289,10 +281,9 @@
 \vs{0}
 （B-23）２つの特性量の値を持つことが必要　（B-24）衝撃波　（B-25）粘性（数値拡散）　（B-26）弱解　
 \vs{0}
-（B-27）エントロピー条件　（B-28）左（負）向きの音波　（B-29）エントロピー波　（B-30）右（正）向きの音波
+（B-27）エントロピー条件　（B-28）左向き（負向き）の音波　（B-29）エントロピー波　（B-30）右向き（正向き）の音波
 \end{spacing}
 
-\newpage
 \section{課題D-1}
 　$x>0$向きの移流速度をもつ線形移流方程式を考えることにする。すなわち次の方程式を考える。
 \neqn{
@@ -302,7 +293,7 @@
 \vs{0}
 　また、今回は一次精度風上差分とLax-Wendroffを用いて上式を解くことを考える。具体的には、空間方向に幅$\Delta x$で$i=1,2,\ldots$と離散化し、時間方向に幅$\Delta t$で$n=0,1,\ldots$と離散化する時、一次精度風上差分及びLax-Wendroffは（$c>0$よりFTBSとなるので）次のようなスキームとなる。
 \neqns{ll}{
-  \text{一次精度風上差分（FTBS）:}\quad & u_i^{n+1} = u_i^n - \dfrac{c\Delta t}{\Delta x}\bracketnormal{u_i^n - u_{i-1}^{n}}\\[5pt]
+  \text{FTBS:}\quad & u_i^{n+1} = u_i^n - \dfrac{c\Delta t}{\Delta x}\bracketnormal{u_i^n - u_{i-1}^{n}}\\[5pt]
   \text{Lax-Wendroff:}\quad & u_i^{n+1} = u_i^n - \dfrac{c\Delta t}{2\Delta x}\bracketnormal{u_{i+1}^n - u_{i-1}^{n}} + \dfrac{1}{2}\bracketnormal{\dfrac{c\Delta t}{\Delta x}}^2 \bracketnormal{u_{i+1}^n - 2u_i^n + u_{i-1}^n}
 }
 　実際の計算においては計算領域を$0\leq x \leq 1$とした上で周期境界を用い、初期条件は$u_0(x) =\sin \bracketnormal{2\pi x}$と定める。また、$c=0.5$と定め、適当に定めた格子幅$\Delta x$に対しCFL条件を満たすように（すなわち$c\Delta t/\Delta x <1 $となるように）$\Delta t$を定めた。\footnote{
@@ -343,14 +334,14 @@
   \epsilon = \sqrt{\dint\absdefined{u\bracketnormal{x}-u_\text{analytic}\bracketnormal{x}}^2 dx}\approx\sqrt{\dsum_i \absdefined{u_i^n-u_\text{analytic}\bracketnormal{x_i}}^2 \Delta x}\labeqn{2}
 }
 がどのように変化するかを調べる。そのためにまず、それぞれのスキームにおける誤差の理論式を導出する。
-\vs{1}
+\vs{0}
 　まず一次精度風上差分について考える。安定性解析をすると、複素増幅率は次のように求まる。
 \neqn{
   g = \dfrac{\tilde{u}^{n+1}}{\tilde{u}^n} = 1-\nu \bracketnormal{1-e^{-j\theta}}
 }
 ただし$\nu = c\Delta t/\Delta x$,$\theta = k\Delta x$であり、$k$はフーリエ展開における波数、$j$は虚数単位である。
 \vs{0}
-　この時、初期条件の正弦波は$k=2\pi$の波であり、その複素振幅は$1$である。よって十分時間が経ったのちも$k=2\pi$であると考えれば、この波の複素振幅は$\tilde{u}^n = 1\times g^n$となるはずである。よって$t=T=n\Delta t$での波は$u_\text{upwind}^n =\Im{g^n e^{jk\Delta x}}$となる。（ただし$k=2\pi$である。）また数値解は$u_\text{analytic}=\sin\bracketnormal{2\pi\bracketnormal{x-cT}}$であるが、これをフーリエ展開の形で書くと$u_\text{analytic} = \Im{e^{j2\pi (x-cT)}}$である。
+　この時、初期条件の正弦波は$k=2\pi$の波であり、その複素振幅は$1$である。よって十分時間が経ったのちも$k=2\pi$であると考えれば、この波の複素振幅は$\tilde{u}^n = 1\times g^n$となるはずである。よって$t=T=n\Delta t$での波は$u_\text{upwind}^n =\Im{g^n e^{jk\Delta x}}$となる。（ただし$k=2\pi$である。）また数値解は$u_\text{analytic}=sin\bracketnormal{2\pi\bracketnormal{x-cT}}$であるが、これをフーリエ展開の形でかくと$u_\text{analytic} = \Im{e^{j2\pi (x-cT)}}$である。
 \vs{0}
 　よって\refeqn{2}中に現れる値は次のように計算される。
 \neqns{lcl}{
@@ -365,7 +356,7 @@
 \neqn{
   \epsilon_\text{upwind}  = \sqrt{\dint{\absdefined{u_i^n-u_\text{analytic}\bracketnormal{x_i}}^2}}  =  \absdefined{A}\curlybracket{{\dint_0^1\sin^2\bracketnormal{\phi + 2\pi x}dx}}^{1/2} = \dfrac{\absdefined{A}}{\sqrt{2}}\labeqn{3}
 }
-　特に今、$e^{-j2\pi cT} = \bracketnormal{e^{-j2\pi \nu \Delta x}}^n $であるから、これを$E^n$と書くことにすれば、\refeqn{3}式中に現れる$A$を次のように計算することができる。
+特に今、$e^{-j2\pi cT} = \bracketnormal{e^{-j2\pi \nu \Delta x}}^n $であるから、これを$E^n$と書くことにすれば、\refeqn{3}式中に現れる$A$を次のように計算することができる。
 \neqns{lcl}{
   A &\; = \; & E^n-g^n\\
   &\; = \; & \bracketnormal{g-E}\bracketnormal{g^{n-1}+g^{n-2}E + \cdots +E^{n-1}}\\
@@ -440,9 +431,9 @@ $
   \label{fig:4}
 \end{figure}
 \vs{0}
-　\reffig{4}を見ると、一次精度風上差分は$\epsilon\propto\Delta x$となっており、Lax-Wendroffは$\epsilon\propto\Delta x^2$となっていることがわかる。（それぞれの色の破線と傾きが一致していることからわかる。）よって題意は示せた。また、$\Delta x\sim 1$近傍で$\epsilon$が$\Delta x$や$\Delta x^2$に比例しなくなるのも予想通りである。（傾きが若干下がってしまっている。）先に導いた誤差の理論式を考えれば、これは$\Delta x$が大きい時は誤差の高次の項が無視できなくなることが原因であるとわかる。
+　\reffig{4}を見ると、一次精度風上差分は$\epsilon\propto\Delta x$となっており、Lax-Wendroffは$\epsilon\propto\Delta x^2$となっていることがわかる。（それぞれの色の破線と傾きが一致していることからわかる。）よって題意は示せた。また、$\Delta x\sim 1$近傍で$\Delta x$や$\Delta x^2$に比例しなくなるのも予想通りである。（傾きが若干下がってしまっている。）先に導いた誤差の理論式を考えれば、これは$\Delta x$が大きい時は誤差の高次の項が無視できなくなることが原因であるとわかる。
 \FloatBarrier
-\subsection*{おまけ：その他のスキーム}
+\subsection{おまけ：その他のスキーム}
 　今回、線形移流方程式でにおいて一次精度風上差分とLax-Wendroffの挙動を観察したが、そのついでにFTCSやKawahara-kuwaharaスキーム、QUICKESTスキームなどでも数値解の挙動を確認した。\footnote{
   Kawahara-Kuwaharaスキームは工学部の災害シミュレーションの授業でちょうど扱ったため、採用した。またQUICKESTスキームは名前がカッコよかったので採用した。（あとすごいらしいと聞いたので。）
 }
@@ -459,7 +450,7 @@ $
   & \qquad \qquad \quad  +\left\{1+\frac{\nu}{2}\left(\nu^2-2\nu-1\right)\right\}u_i^n-\frac{\nu(\nu^2-3\nu+2)}{6}u_{i+1}^n 
 }
 
-その結果を示したのが\reffig{5}である。
+　その結果を示したのが\reffig{5}である。
 \begin{figure}[!htbp]
     \centering
     \begin{subfigure}{0.31\textwidth}
@@ -522,10 +513,9 @@ $
     \label{tab:1}
 \end{table}
 
+
+
 \FloatBarrier
-
-
-\clearpage
 
 \section{課題D-2}
 　非粘性Burgers方程式
@@ -550,7 +540,7 @@ $
   \end{aligned}\right.
 }
 と変更することにする\footnote{領域を広げただけで本質的には何も変えていない。}。
-\subsection*{解析解}
+\subsection{解析解}
 　まず、この場合の解析解を考えることにする。そのためにはまず積分形を満たす弱解を構成し、その解がエントロピー条件を満たしているかどうかを確認すれば良い。
 \vs{0}
 　その上で、今回は初期条件が矩形波であり、初め$x=1/3$にある不連続面を前面、$x=-1/3$にある不連続面を後面と呼ぶことにすると、前面においては$U_L>U_R$のRiemann問題を考えればよく、後面においては$U_L<U_R$のRiemann問題を考えれば良い。（\reffig{7}参照。）
@@ -591,12 +581,12 @@ $
 \end{figure}
 
 \vs{0}
-　今\refeqn{35}式の膨張波と衝撃波はそれぞれがRiemann問題と見做せるような領域で積分形のBurgers方程式を満たし、ここに積分の加法性\footnote{
+　今\refeqn{35}式の膨張派と衝撃波はそれぞれがRiemann問題と見做せるような領域で積分形のBurgers方程式を満たし、ここに積分の加法性\footnote{
   $\int_a^b = \int_a^m + \int_m^b$
 }を加味すればその組み合わせとして表される\refeqn{35}式もまた積分形のBurgers方程式を満たすことがわかる。よって、\refeqn{35}式で表される解は弱解である。
 \FloatBarrier
 \vs{0}
-　ただし、\reffig{8}を見ると膨張波は衝撃波よりも早く進むことがわかり、計算すると$t_c = 4/3$で追いついてしまう。（この時衝撃波面は$x_c=1$にある。）この時、膨張波が追いつくと$-1/3 + t < x< t/2 $を満たす領域（すなわち膨張波と衝撃波面の間の$u=1$の部分、\reffig{8}で表すと、右二つの赤点の間の「平坦」な部分）が消失してしまい、「系が二つのRiemann問題の足し合わせと見做せる」という前提が崩れてしまう。よって$t>t_c$以降では\refeqn{35}式で表される解が弱解となるとは限らない。
+　ただし、\reffig{8}を見ると膨張波は衝撃波よりも早く進むことがわかり、計算すると$t_c = 4/3$で追いついてしまう。（この時衝撃波面は$x_c=1$にある。）この時、膨張波が追いつくと$-1/3 + t < x< 1/2 t$を満たす領域（すなわち膨張波と衝撃波面の間の$u=1$の部分、\reffig{8}で表すと、右二つの赤点の間の「平坦」な部分）が消失してしまい、「系が二つのRiemann問題の足し合わせと見做せる」という前提が崩れてしまう。よって$t>t_c$以降では\refeqn{35}式で表される解が弱解となるとは限らない。
 \vs{0}
 　そこで、$t>t_c$以降の弱解の候補として\refeqn{36}式及び\reffig{9}で表されるような解を考える。\footnote{
   衝撃波面$x_s(t)$が必ずしも一定でない速度で進むと仮定し、また衝撃波の後方は$t<t_c$の膨張波解と同様の式で表されると仮定して\refeqn{36}式を導いた。
@@ -619,13 +609,13 @@ $
 \neqn{
   \difop{t}\dint_{x_1}^{x_2} U dx = - \dfrac{u(x_2,t)^2}{2}+\dfrac{u(x_1,t)^2}{2}\labeqn{37}
 }
-の解となる条件を考える。以降、見やすさのため膨張波の起点を$x_0=-1/3$と書くことにする。（すなわち膨張波は$U = (x-x_0)/t$となる。）この時、\refeqn{37}式は$-1/3 < x_1 < x_s(t)$、$x_s(t)<x_2$として確かめれば十分で、この時\refeqn{37}式の左辺及び右辺は
+の解となる条件を考える。以降、見やすさのため膨張波の起点を$x_0=1/3$と書くことにする。（すなわち膨張波は$U = (x-x_0)/t$となる。）この時、\refeqn{37}式は$-1/3 < x_1 < x_s(t)$、$x_s(t)<x_2$として確かめれば十分で、この時\refeqn{37}式の左辺及び右辺は
 \neqns{lcl}{
   \text{LHS} &\neqnsequal &\difop{t}\dint_{x_1}^{x_s(t)} U dx+\difop{t}\dint_{x_s(t)}^{x_2} U dx\\
   &\neqnsequal & \difop{t}\dint_{x_1}^{x_s(t)} U dx\\
-  &\neqnsequal & \difop{t}\dint_{x_1}^{x_s(t)} \dfrac{x-x_0}{t} dx\\
+  &\neqnsequal & \difop{t}\dint_{x_1}^{x_s(t)} \dfrac{x+x_0}{t} dx\\
   &\neqnsequal & \dfrac{x_s(t)-x_0}{t}\dif{x_s(t)}{t} - \dfrac{1}{2}\dfrac{\bracketnormal{x_s(t)-x_0}^2}{t^2} + \dfrac{1}{2}\dfrac{\bracketnormal{x_1-x_0}^2}{t^2}\\[10pt]
-  \text{RHS} &\neqnsequal & -\dfrac{u(x_2,t)^2}{2}+\dfrac{u(x_1,t)^2}{2}\\
+  \text{RHS} &\neqnsequal & \dfrac{u(x_2,t)^2}{2}+\dfrac{u(x_1,t)^2}{2}\\
   &\neqnsequal & \dfrac{u(x_1,t)^2}{2}\\
   &\neqnsequal & \dfrac{1}{2}\dfrac{\bracketnormal{x_1-x_0}^2}{t^2}
 }
@@ -633,15 +623,15 @@ $
 \neqn{
   \dif{x_s(t)}{t} = \dfrac{x_s(t)-x_0}{2t}
 }
-よってこの微分方程式を初期条件$x(t_c) = x_c$の下とけば、最終的に$x_s(t)$として次を得る。
+よってこの微分方程式を初期条件$x(t_c=4/3) = x_c=1$の下とけば、最終的に$x_s(t)$として次を得る。
 \neqn{
   x_s(t) = x_0 + \dfrac{2}{\sqrt{3}}\sqrt{t}\labeqn{46}
 }
 \FloatBarrier
 \vs{0}
 よって、$x_s(t)$が\refeqn{46}式で表される時\refeqn{36}式で表される解は$t>t_c$における弱解となる。
-\vs{1}
-　よって、$t<t_c$及び$t>t_c$での弱解を組み合わせれば、最終的に弱解として次を得る。
+\vs{0}
+　よって、$t<t_c$及び$t_c$での弱解を組み合わせれば、最終的に弱解として次を得る。
 \neqns{l}{
   u(x,t<t_c) = \left\{
   \begin{aligned}
@@ -668,106 +658,18 @@ $
 \FloatBarrier
 
 \vs{1}
-　さて、弱解がもとまったので、次に考えるべきはこの弱解がエントロピー条件を満たすか否かである。そこで、得られた弱解を参考に特性曲線を描いてみると\reffig{11}のようになる。
-
-\vs{0}
-　\reffig{11}をみると、特性曲線はオレンジで表される衝撃波面に吸収されていることがわかる。よって特性曲線が不連続に収束している（不連続から特性曲線が湧き出していない）ことがわかり、今考えている弱解はエントロピー条件を満たしている。よって、\refeqn{48}\refeqn{49}式（あるいは\reffig{10}）で表される解が今回の系における解析解である。
+　さて、弱解がもとまったので、次に考えるべきはこの弱解がエントロピー条件を満たすか否かである。そこで、得られた弱解を参考に特性曲線を描いてみると、\reffig{11}のようになる。
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.75\textwidth]{./image_tex/rieman_curve.png}
   \caption{考えている弱解の特性曲線$dx/dt=u(x,t)$。特性曲線に沿って$u$の値が保存する。オレンジの線は衝撃波面の位置を表し、青の領域は膨張波を表す。また緑は衝撃波と膨張波に挟まれた$u=1$の平坦部を表し、これは$t=t_c$で消滅する。また、灰色の領域は$u=0$となっている部分である。}
   \label{fig:11}
 \end{figure}
+\vs{0}
+　\reffig{11}をみると、特性曲線はオレンジで表される衝撃波面に吸収されていることがわかる。よって特性曲線が不連続に収束している（不連続から特性曲線が湧き出していない）ことがわかり、今考えている弱解はエントロピー条件を満たしている。よって、\refeqn{48}\refeqn{49}式（あるいは\reffig{10}）で表される解が今回の系における解析解である。
 \FloatBarrier
-\subsection*{計算}
-　解析解が求まったので、次は数値解について考える。今時間ステップ$n$において$u_i^n$が求まっている時、一次精度風上差分法及び2段階Lax-Wendroff法による$u_i^{n+1}$の更新スキームは次のよう。
-\neqns{ll}{
-  \text{1次精度風上差分:} \qquad & u_i^{n+1}=u_i^n-\frac{\Delta t}{\Delta x}\left(\hat f_{i+1/2}^n-\hat f_{i-1/2}^n\right)\\[5pt]
-  &  \qquad \hat f_{i+1/2}^n=\frac{(u_i^n)^2}{2}\\[10pt]
-  \text{２段階Lax-Wendroff:}\qquad & u_i^{n+1}=u_i^n-\frac{\Delta t}{\Delta x}\left(\hat f_{i+1/2}^n-\hat f_{i-1/2}^n\right)\\[5pt]
-  & \qquad\hat f_{i+1/2}^n=\frac{1}{2}\left(u_{i+1/2}^{n+1/2}\right)^2-\gamma_{i+1/2}^n\frac{\Delta x}{\Delta t}\left(u_{i+1}^n-u_i^n\right)\\[5pt]
-  &\qquad u_{i+1/2}^{n+1/2}=\frac{u_i^n+u_{i+1}^n}{2}-\frac{\Delta t}{4\Delta x}\left[(u_{i+1}^n)^2-(u_i^n)^2\right]\\[5pt]
-  &\qquad\gamma_{i+1/2}^n=\epsilon\left|u_{i+1}^n-u_i^n\right|
-}
-　特に2段階Lax-Wendroffにおいては$u$の勾配が急なところで強くなるような人工粘性$\gamma$を導入している。すなわち$\gamma = \epsilon \absdefined{ \partial U/\partial x}$として人工粘性を決定する。ただし$\epsilon$は人工粘性の強さを決めるパラメタである。
-\vs{0}
-　また、計算に当たっては$\Delta t = \nu \Delta x$によって$\Delta t$を定めることにする。（$\nu$は適切に決定する。）また、$\Delta x =\bracketnormal{\text{領域幅}}/\bracketnormal{\text{格子数}}$として$\Delta x$を定めることにする。すなわち空間方向の格子数$M$が精度を決定するパラメタとなる。
-\vs{0}
-　以上より、今回の計算においてパラメタとなるのは格子数$M$と人工粘性の強さ$\epsilon$の２種類である。よってこれらのパラメタを適宜調整しながら結果を観察する。
-\subsection*{結果}
-　まず、\reffig{100}に1次精度風上差分法を用いた計算結果を示す。（\href{https://shota-mitamura.com/works/geo_analysiskadai1/kadai/}{動画ページ}では図７に対応している。）\reffig{100}の一番左の図は格子数を$50$として計算した場合の$t=1$頃の結果を示しているが、この画像を見ると衝撃波及び膨張波は捉えられているものの、数値拡散により精度が悪く衝撃波面の傾きが緩くなってしまっていることがわかる。ただし、格子数を$100,200$としてメッシュを細かくしていくと数値拡散は弱くなっていき、数値解の精度が良くなっていく。（\reffig{100}中央図及び右図参照。）
-\vs{0}
-　次に、\reffig{101}に2段階Lax-Wendroff法を用いた計算結果を示す。（\href{https://shota-mitamura.com/works/geo_analysiskadai1/kadai/}{動画ページ}では図８に対応している。）ただし格子数は$100$で固定しており、人工粘性の強さ$\epsilon$を変化させている。まず\reffig{101}左図の一番人工粘性が強い場合（$\epsilon =0.05$）を観察すると、一次精度風上差分に比べて数値拡散が抑えられており、一次精度風上差分で同じメッシュ数で計算した場合（\reffig{100}中央図）と比べても衝撃波の急峻な立ち上がりを捉えることができていることがわかる。ただしその対価として数値振動がが発生してしまっている。また、\reffig{101}中央図及び右図（それぞれ$\epsilon = 0.2,0.4$、右に行くほど人工粘性が強くなっている）を見ると、人工粘性が強いほど数値振動が抑えられる代わりに数値拡散が発生し衝撃波の立ち上がりを捉えづらくなっていることがわかる。
-\begin{figure}[!htbp]
-    \centering
-    \begin{subfigure}{0.31\textwidth}
-        \centering
-        \includegraphics[width = \linewidth]{./image_tex/burgersupwind3000032.png}
-    \end{subfigure}
-    \begin{subfigure}{0.31\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{./image_tex/burgersupwind2000063.png}
-    \end{subfigure}
-    \begin{subfigure}{0.31\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{./image_tex/burgersupwind1000125.png}
-    \end{subfigure}
-    \caption{1次精度風上差分を用いた数値計算の結果。画像の右にいくほど空間の格子数が多くなっている。（すなわち$\Delta x$が小さくなっている。）}
-    \label{fig:100}
-\end{figure}
+\subsection{計算}
 
-\begin{figure}[!htbp]
-    \centering
-    \begin{subfigure}{0.31\textwidth}
-        \centering
-        \includegraphics[width = \linewidth]{./image_tex/burgerslax4000063.png}
-    \end{subfigure}
-    \begin{subfigure}{0.31\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{./image_tex/burgerslax6000063.png}
-    \end{subfigure}
-    \begin{subfigure}{0.31\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{./image_tex/burgerslax5000063.png}
-    \end{subfigure}
-    \caption{2段階Lax-Wendroffを用いた数値計算の結果。格子数は固定し、人工粘性の強さ$\epsilon$を変化させている。画像の右にいくほど人工粘性が強くなっている。}
-    \label{fig:101}
-\end{figure}
-\FloatBarrier
-\subsection*{スキームの比較}
-　最後に二つのスキームの比較を行う。\reffig{102}は1次精度風上差分（青）及び2段階Lax-Wendroff（オレンジ）による数値解を同じ画面に表示したものであり、左図は膨張波が衝撃波に追いつく前$\bracketnormal{t<t_c}$での様子で右図は膨張波が衝撃波に追いついた後$\bracketnormal{t>t_c}$での様子ある。（\href{https://shota-mitamura.com/works/geo_analysiskadai1/kadai/}{動画ページ}では図９に対応している。）この図や動画を見ると、いずれのスキームも衝撃波の速度を正しく捉えることができており、それは衝撃波の速度が一定で無くなった$t>t_c=4/3$以降も変わらない。（ただし精度の悪さに由来するずれは生じている。）また、やはり１次元風上差分では数値拡散が生じる影響で衝撃波面の立ち上がりが鈍くなっており、Lax-Wendroffの方が衝撃波面がより解析解に近くなっている。
-\vs{0}
-　また、メッシュを細かくするといずれのスキームでも衝撃波の再現精度が良くなることがわかる。（\reffig{103}参照。\href{https://shota-mitamura.com/works/geo_analysiskadai1/kadai/}{動画ページ}では図１０に対応している。）
-　
-\begin{figure}[!htbp]
-    \centering
-    \begin{subfigure}{0.35\textwidth}
-        \centering
-        \includegraphics[width = \linewidth]{./image_tex/burgerscombined000063.png}
-    \end{subfigure}
-    \hspace{0.05\linewidth}
-    \begin{subfigure}{0.35\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{./image_tex/burgerscombined000175.png}
-    \end{subfigure}
-    \caption{1次精度風上差分（青）及び2段階Lax-Wendroff（オレンジ）の比較。左は膨張波が衝撃波に追いつく前での様子。右は膨張波が衝撃波に追いついた後の様子。}
-    \label{fig:102}
-\end{figure}
-\begin{figure}[!htbp]
-    \centering
-    \begin{subfigure}{0.35\textwidth}
-        \centering
-        \includegraphics[width = \linewidth]{./image_tex/burgerscombined2000125.png}
-    \end{subfigure}
-    \hspace{0.05\linewidth}
-    \begin{subfigure}{0.35\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{./image_tex/burgerscombined2000350.png}
-    \end{subfigure}
-    \caption{\reffig{102}よりもメッシュを細かくした場合の数値計算結果。}
-    \label{fig:103}
-\end{figure}
-\FloatBarrier
 
 
 \newpage

@@ -1,11 +1,11 @@
 # Fdb version 4
-["xdvipdfmx"] 1780225792 "out/main.xdv" "out/main.pdf" "out/main" 1780225793 0
-  "out/main.xdv" 1780225792 214004 ae8489d4c507feab915392b6925a76c8 "xelatex"
+["xdvipdfmx"] 1780224935 "out/bakuckupp.xdv" "out/bakuckupp.pdf" "out/bakuckupp" 1780224936 0
+  "out/bakuckupp.xdv" 1780224935 213580 c67f64e2fecf0d73bdef0394c230d615 "xelatex"
   (generated)
-  "out/main.pdf"
+  "out/bakuckupp.pdf"
   (rewritten before read)
-["xelatex"] 1780225790 "/Users/shotamitamura/Documents/folders/gakugyou/大学/Classes/2026/地球物理数値解析/amano_report/main.tex" "out/main.xdv" "main" 1780225793 0
-  "/Users/shotamitamura/Documents/folders/gakugyou/大学/Classes/2026/地球物理数値解析/amano_report/main.tex" 1780225790 48386 86d056236110837b0309d13c94304946 ""
+["xelatex"] 1780224933 "/Users/shotamitamura/Documents/folders/gakugyou/大学/Classes/2026/地球物理数値解析/amano_report/bakuckupp.tex" "out/bakuckupp.xdv" "bakuckupp" 1780224936 0
+  "/Users/shotamitamura/Documents/folders/gakugyou/大学/Classes/2026/地球物理数値解析/amano_report/bakuckupp.tex" 1780224921 48306 210ff139b6fc19e3c753cd2aba1f68d8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm0500.tfm" 1136768653 1536 b3387106d9afecbfe14bde2de6eadf47 ""
@@ -245,6 +245,7 @@
   "/usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf" 1677365944 40745 87bb86a62d462f93a1efc6b0c65c872e ""
   "/usr/local/texlive/2023/texmf-var/web2c/xetex/xelatex.fmt" 1699019437 10502857 f6f256121db27afed14136ec21de1aaa ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
+  "bakuckupp.tex" 1780224921 48306 210ff139b6fc19e3c753cd2aba1f68d8 ""
   "image_tex/aftcrit.png" 1780216922 55789 d0ac4f4d62a46cfb81b6c7272afe007a ""
   "image_tex/analytic.png" 1780219050 65206 f12504c1495ec0f0b6580e34af1af285 ""
   "image_tex/beftcrit.png" 1780213684 27326 d8d8ecdf7d3a372c64d878bb4331d4b4 ""
@@ -267,14 +268,13 @@
   "image_tex/image_box_all003500.png" 1780192309 76020 7b0ffd1fae562c556604f0e8a566098a ""
   "image_tex/rieman_curve.png" 1780219404 157957 341d284e8c9d94f5e324e2c510600cfb ""
   "image_tex/riemannseperation.png" 1780212097 76576 fc4b8e34b83251e0d20842ceed3d4320 ""
-  "main.tex" 1780225790 48386 86d056236110837b0309d13c94304946 ""
-  "out/main.aux" 1780225792 10120 fc6ec828bddd3a03240909dcb92920ab "xelatex"
-  "out/main.out" 1780225792 351 489c99760c03e659b746287e48da5a35 "xelatex"
-  "out/main.toc" 1780225792 355 3023dfd73b10f2d147ee4ce1ae93f6ba "xelatex"
+  "out/bakuckupp.aux" 1780224935 10120 416a1d311b0cbaebfb5d78cd04f0eeab "xelatex"
+  "out/bakuckupp.out" 1780224935 351 489c99760c03e659b746287e48da5a35 "xelatex"
+  "out/bakuckupp.toc" 1780224935 355 8f936da509fb068e595039fa1713b533 "xelatex"
   (generated)
-  "out/main.aux"
-  "out/main.log"
-  "out/main.out"
-  "out/main.toc"
-  "out/main.xdv"
+  "out/bakuckupp.aux"
+  "out/bakuckupp.log"
+  "out/bakuckupp.out"
+  "out/bakuckupp.toc"
+  "out/bakuckupp.xdv"
   (rewritten before read)

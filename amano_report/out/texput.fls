@@ -1,0 +1,5 @@
+PWD /Users/shotamitamura/Documents/folders/gakugyou/大学/Classes/2026/地球物理数値解析/amano_report
+INPUT /usr/local/texlive/2023/texmf.cnf
+INPUT /usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2023/texmf-var/web2c/xetex/xelatex.fmt
+OUTPUT out/texput.log

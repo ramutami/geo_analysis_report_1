@@ -522,11 +522,11 @@ $
     \label{tab:1}
 \end{table}
 
+
+
 \FloatBarrier
 
-
-\clearpage
-
+\newpage
 \section{課題D-2}
 　非粘性Burgers方程式
 \neqn{
@@ -591,12 +591,12 @@ $
 \end{figure}
 
 \vs{0}
-　今\refeqn{35}式の膨張波と衝撃波はそれぞれがRiemann問題と見做せるような領域で積分形のBurgers方程式を満たし、ここに積分の加法性\footnote{
+　今\refeqn{35}式の膨張派と衝撃波はそれぞれがRiemann問題と見做せるような領域で積分形のBurgers方程式を満たし、ここに積分の加法性\footnote{
   $\int_a^b = \int_a^m + \int_m^b$
 }を加味すればその組み合わせとして表される\refeqn{35}式もまた積分形のBurgers方程式を満たすことがわかる。よって、\refeqn{35}式で表される解は弱解である。
 \FloatBarrier
 \vs{0}
-　ただし、\reffig{8}を見ると膨張波は衝撃波よりも早く進むことがわかり、計算すると$t_c = 4/3$で追いついてしまう。（この時衝撃波面は$x_c=1$にある。）この時、膨張波が追いつくと$-1/3 + t < x< t/2 $を満たす領域（すなわち膨張波と衝撃波面の間の$u=1$の部分、\reffig{8}で表すと、右二つの赤点の間の「平坦」な部分）が消失してしまい、「系が二つのRiemann問題の足し合わせと見做せる」という前提が崩れてしまう。よって$t>t_c$以降では\refeqn{35}式で表される解が弱解となるとは限らない。
+　ただし、\reffig{8}を見ると膨張波は衝撃波よりも早く進むことがわかり、計算すると$t_c = 4/3$で追いついてしまう。（この時衝撃波面は$x_c=1$にある。）この時、膨張波が追いつくと$-1/3 + t < x< 1/2 t$を満たす領域（すなわち膨張波と衝撃波面の間の$u=1$の部分、\reffig{8}で表すと、右二つの赤点の間の「平坦」な部分）が消失してしまい、「系が二つのRiemann問題の足し合わせと見做せる」という前提が崩れてしまう。よって$t>t_c$以降では\refeqn{35}式で表される解が弱解となるとは限らない。
 \vs{0}
 　そこで、$t>t_c$以降の弱解の候補として\refeqn{36}式及び\reffig{9}で表されるような解を考える。\footnote{
   衝撃波面$x_s(t)$が必ずしも一定でない速度で進むと仮定し、また衝撃波の後方は$t<t_c$の膨張波解と同様の式で表されると仮定して\refeqn{36}式を導いた。
@@ -619,13 +619,13 @@ $
 \neqn{
   \difop{t}\dint_{x_1}^{x_2} U dx = - \dfrac{u(x_2,t)^2}{2}+\dfrac{u(x_1,t)^2}{2}\labeqn{37}
 }
-の解となる条件を考える。以降、見やすさのため膨張波の起点を$x_0=-1/3$と書くことにする。（すなわち膨張波は$U = (x-x_0)/t$となる。）この時、\refeqn{37}式は$-1/3 < x_1 < x_s(t)$、$x_s(t)<x_2$として確かめれば十分で、この時\refeqn{37}式の左辺及び右辺は
+の解となる条件を考える。以降、見やすさのため膨張波の起点を$x_0=1/3$と書くことにする。（すなわち膨張波は$U = (x-x_0)/t$となる。）この時、\refeqn{37}式は$-1/3 < x_1 < x_s(t)$、$x_s(t)<x_2$として確かめれば十分で、この時\refeqn{37}式の左辺及び右辺は
 \neqns{lcl}{
   \text{LHS} &\neqnsequal &\difop{t}\dint_{x_1}^{x_s(t)} U dx+\difop{t}\dint_{x_s(t)}^{x_2} U dx\\
   &\neqnsequal & \difop{t}\dint_{x_1}^{x_s(t)} U dx\\
-  &\neqnsequal & \difop{t}\dint_{x_1}^{x_s(t)} \dfrac{x-x_0}{t} dx\\
+  &\neqnsequal & \difop{t}\dint_{x_1}^{x_s(t)} \dfrac{x+x_0}{t} dx\\
   &\neqnsequal & \dfrac{x_s(t)-x_0}{t}\dif{x_s(t)}{t} - \dfrac{1}{2}\dfrac{\bracketnormal{x_s(t)-x_0}^2}{t^2} + \dfrac{1}{2}\dfrac{\bracketnormal{x_1-x_0}^2}{t^2}\\[10pt]
-  \text{RHS} &\neqnsequal & -\dfrac{u(x_2,t)^2}{2}+\dfrac{u(x_1,t)^2}{2}\\
+  \text{RHS} &\neqnsequal & \dfrac{u(x_2,t)^2}{2}+\dfrac{u(x_1,t)^2}{2}\\
   &\neqnsequal & \dfrac{u(x_1,t)^2}{2}\\
   &\neqnsequal & \dfrac{1}{2}\dfrac{\bracketnormal{x_1-x_0}^2}{t^2}
 }
@@ -633,15 +633,15 @@ $
 \neqn{
   \dif{x_s(t)}{t} = \dfrac{x_s(t)-x_0}{2t}
 }
-よってこの微分方程式を初期条件$x(t_c) = x_c$の下とけば、最終的に$x_s(t)$として次を得る。
+よってこの微分方程式を初期条件$x(t_c=4/3) = x_c=1$の下とけば、最終的に$x_s(t)$として次を得る。
 \neqn{
   x_s(t) = x_0 + \dfrac{2}{\sqrt{3}}\sqrt{t}\labeqn{46}
 }
 \FloatBarrier
 \vs{0}
 よって、$x_s(t)$が\refeqn{46}式で表される時\refeqn{36}式で表される解は$t>t_c$における弱解となる。
-\vs{1}
-　よって、$t<t_c$及び$t>t_c$での弱解を組み合わせれば、最終的に弱解として次を得る。
+\vs{0}
+　よって、$t<t_c$及び$t_c$での弱解を組み合わせれば、最終的に弱解として次を得る。
 \neqns{l}{
   u(x,t<t_c) = \left\{
   \begin{aligned}
@@ -668,19 +668,18 @@ $
 \FloatBarrier
 
 \vs{1}
-　さて、弱解がもとまったので、次に考えるべきはこの弱解がエントロピー条件を満たすか否かである。そこで、得られた弱解を参考に特性曲線を描いてみると\reffig{11}のようになる。
-
-\vs{0}
-　\reffig{11}をみると、特性曲線はオレンジで表される衝撃波面に吸収されていることがわかる。よって特性曲線が不連続に収束している（不連続から特性曲線が湧き出していない）ことがわかり、今考えている弱解はエントロピー条件を満たしている。よって、\refeqn{48}\refeqn{49}式（あるいは\reffig{10}）で表される解が今回の系における解析解である。
+　さて、弱解がもとまったので、次に考えるべきはこの弱解がエントロピー条件を満たすか否かである。そこで、得られた弱解を参考に特性曲線を描いてみると、\reffig{11}のようになる。
 \begin{figure}[!htbp]
   \centering
   \includegraphics[width=0.75\textwidth]{./image_tex/rieman_curve.png}
   \caption{考えている弱解の特性曲線$dx/dt=u(x,t)$。特性曲線に沿って$u$の値が保存する。オレンジの線は衝撃波面の位置を表し、青の領域は膨張波を表す。また緑は衝撃波と膨張波に挟まれた$u=1$の平坦部を表し、これは$t=t_c$で消滅する。また、灰色の領域は$u=0$となっている部分である。}
   \label{fig:11}
 \end{figure}
+\vs{0}
+　\reffig{11}をみると、特性曲線はオレンジで表される衝撃波面に吸収されていることがわかる。よって特性曲線が不連続に収束している（不連続から特性曲線が湧き出していない）ことがわかり、今考えている弱解はエントロピー条件を満たしている。よって、\refeqn{48}\refeqn{49}式（あるいは\reffig{10}）で表される解が今回の系における解析解である。
 \FloatBarrier
 \subsection*{計算}
-　解析解が求まったので、次は数値解について考える。今時間ステップ$n$において$u_i^n$が求まっている時、一次精度風上差分法及び2段階Lax-Wendroff法による$u_i^{n+1}$の更新スキームは次のよう。
+　時間ステップ$n$において$u_i^n$が求まっている時、一次精度風上差分法及び2段階Lax-Wendroff法による$u_i^{n+1}$の更新スキームは次のよう。
 \neqns{ll}{
   \text{1次精度風上差分:} \qquad & u_i^{n+1}=u_i^n-\frac{\Delta t}{\Delta x}\left(\hat f_{i+1/2}^n-\hat f_{i-1/2}^n\right)\\[5pt]
   &  \qquad \hat f_{i+1/2}^n=\frac{(u_i^n)^2}{2}\\[10pt]
@@ -689,7 +688,7 @@ $
   &\qquad u_{i+1/2}^{n+1/2}=\frac{u_i^n+u_{i+1}^n}{2}-\frac{\Delta t}{4\Delta x}\left[(u_{i+1}^n)^2-(u_i^n)^2\right]\\[5pt]
   &\qquad\gamma_{i+1/2}^n=\epsilon\left|u_{i+1}^n-u_i^n\right|
 }
-　特に2段階Lax-Wendroffにおいては$u$の勾配が急なところで強くなるような人工粘性$\gamma$を導入している。すなわち$\gamma = \epsilon \absdefined{ \partial U/\partial x}$として人工粘性を決定する。ただし$\epsilon$は人工粘性の強さを決めるパラメタである。
+　特に2段階Lax-Wendroffにおいては$u$の勾配が急なところで強くなるような人工粘性$\gamma$を導入している。すなわち$\gamma = \epsilon \cdot \partial U/\partial x$として人工粘性を決定する。ただし$\epsilon$は人工粘性の強さを決めるパラメタである。
 \vs{0}
 　また、計算に当たっては$\Delta t = \nu \Delta x$によって$\Delta t$を定めることにする。（$\nu$は適切に決定する。）また、$\Delta x =\bracketnormal{\text{領域幅}}/\bracketnormal{\text{格子数}}$として$\Delta x$を定めることにする。すなわち空間方向の格子数$M$が精度を決定するパラメタとなる。
 \vs{0}
@@ -741,12 +740,12 @@ $
 　
 \begin{figure}[!htbp]
     \centering
-    \begin{subfigure}{0.35\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width = \linewidth]{./image_tex/burgerscombined000063.png}
     \end{subfigure}
     \hspace{0.05\linewidth}
-    \begin{subfigure}{0.35\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{./image_tex/burgerscombined000175.png}
     \end{subfigure}
@@ -755,12 +754,12 @@ $
 \end{figure}
 \begin{figure}[!htbp]
     \centering
-    \begin{subfigure}{0.35\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width = \linewidth]{./image_tex/burgerscombined2000125.png}
     \end{subfigure}
     \hspace{0.05\linewidth}
-    \begin{subfigure}{0.35\textwidth}
+    \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=\linewidth]{./image_tex/burgerscombined2000350.png}
     \end{subfigure}

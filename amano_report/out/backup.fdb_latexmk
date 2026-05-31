@@ -1,11 +1,11 @@
 # Fdb version 4
-["xdvipdfmx"] 1780225792 "out/main.xdv" "out/main.pdf" "out/main" 1780225793 0
-  "out/main.xdv" 1780225792 214004 ae8489d4c507feab915392b6925a76c8 "xelatex"
+["xdvipdfmx"] 1780220031 "out/backup.xdv" "out/backup.pdf" "out/backup" 1780220032 0
+  "out/backup.xdv" 1780220031 173680 1788176a16052ef7577749f1f9d66860 "xelatex"
   (generated)
-  "out/main.pdf"
+  "out/backup.pdf"
   (rewritten before read)
-["xelatex"] 1780225790 "/Users/shotamitamura/Documents/folders/gakugyou/大学/Classes/2026/地球物理数値解析/amano_report/main.tex" "out/main.xdv" "main" 1780225793 0
-  "/Users/shotamitamura/Documents/folders/gakugyou/大学/Classes/2026/地球物理数値解析/amano_report/main.tex" 1780225790 48386 86d056236110837b0309d13c94304946 ""
+["xelatex"] 1780220030 "/Users/shotamitamura/Documents/folders/gakugyou/大学/Classes/2026/地球物理数値解析/amano_report/backup.tex" "out/backup.xdv" "backup" 1780220032 0
+  "/Users/shotamitamura/Documents/folders/gakugyou/大学/Classes/2026/地球物理数値解析/amano_report/backup.tex" 1780219997 38976 3286539369ff07b7e51fbea7526b2d2f ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcrm0500.tfm" 1136768653 1536 b3387106d9afecbfe14bde2de6eadf47 ""
@@ -245,19 +245,10 @@
   "/usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf" 1677365944 40745 87bb86a62d462f93a1efc6b0c65c872e ""
   "/usr/local/texlive/2023/texmf-var/web2c/xetex/xelatex.fmt" 1699019437 10502857 f6f256121db27afed14136ec21de1aaa ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
+  "backup.tex" 1780219997 38976 3286539369ff07b7e51fbea7526b2d2f ""
   "image_tex/aftcrit.png" 1780216922 55789 d0ac4f4d62a46cfb81b6c7272afe007a ""
   "image_tex/analytic.png" 1780219050 65206 f12504c1495ec0f0b6580e34af1af285 ""
   "image_tex/beftcrit.png" 1780213684 27326 d8d8ecdf7d3a372c64d878bb4331d4b4 ""
-  "image_tex/burgerscombined000063.png" 1780222608 26142 19624980c3832ceebefd7745253e7762 ""
-  "image_tex/burgerscombined000175.png" 1780222608 25587 afece4e9b41f9ef35d1b6a3031546d72 ""
-  "image_tex/burgerscombined2000125.png" 1780222608 25116 273529082f7d39debc94997dfda9bbf3 ""
-  "image_tex/burgerscombined2000350.png" 1780222608 24020 af77694d91f04beee0ee38e911fa06ce ""
-  "image_tex/burgerslax4000063.png" 1780222020 22347 0ba70cd1eb2a58fc6a529b248a418e5d ""
-  "image_tex/burgerslax5000063.png" 1780222020 23258 88b5a931bae33b9fb9391d4930160066 ""
-  "image_tex/burgerslax6000063.png" 1780222020 22984 f6b709abec02b3936b83b9ffd4d20203 ""
-  "image_tex/burgersupwind1000125.png" 1780221484 20824 a004e62b98997450d9f7e32c20f0ff88 ""
-  "image_tex/burgersupwind2000063.png" 1780221484 21112 f22bb534aae43f7cccce3e467c385ec0 ""
-  "image_tex/burgersupwind3000032.png" 1780221484 21950 42bc7f9a83eb1b401511e08be61c653d ""
   "image_tex/epsilon.png" 1780191150 40088 913357ce86e6b6c81e3eb589edd261aa ""
   "image_tex/image000150.png" 1780172526 25917 13992e6980e64dff0b6def2b6aa364b3 ""
   "image_tex/image_box003500.png" 1780154847 33363 f6487720b8486031fe296b7b574cafd3 ""
@@ -267,14 +258,13 @@
   "image_tex/image_box_all003500.png" 1780192309 76020 7b0ffd1fae562c556604f0e8a566098a ""
   "image_tex/rieman_curve.png" 1780219404 157957 341d284e8c9d94f5e324e2c510600cfb ""
   "image_tex/riemannseperation.png" 1780212097 76576 fc4b8e34b83251e0d20842ceed3d4320 ""
-  "main.tex" 1780225790 48386 86d056236110837b0309d13c94304946 ""
-  "out/main.aux" 1780225792 10120 fc6ec828bddd3a03240909dcb92920ab "xelatex"
-  "out/main.out" 1780225792 351 489c99760c03e659b746287e48da5a35 "xelatex"
-  "out/main.toc" 1780225792 355 3023dfd73b10f2d147ee4ce1ae93f6ba "xelatex"
+  "out/backup.aux" 1780220031 8364 89e85954a39381ebf323359145a7ec52 "xelatex"
+  "out/backup.out" 1780220031 658 23b99af0c74b4fc981fc8c630226cbf8 "xelatex"
+  "out/backup.toc" 1780220031 605 fcf623118e15a7cce3501e064b53a958 "xelatex"
   (generated)
-  "out/main.aux"
-  "out/main.log"
-  "out/main.out"
-  "out/main.toc"
-  "out/main.xdv"
+  "out/backup.aux"
+  "out/backup.log"
+  "out/backup.out"
+  "out/backup.toc"
+  "out/backup.xdv"
   (rewritten before read)

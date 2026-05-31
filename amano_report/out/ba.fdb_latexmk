@@ -1,0 +1,12 @@
+# Fdb version 4
+["xdvipdfmx"] 0 "out/ba.xdv" "out/ba.pdf" "out/ba" 0 -1
+  "out/ba.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "out/ba.pdf"
+  (rewritten before read)
+["xelatex"] 1780219984 "/Users/shotamitamura/Documents/folders/gakugyou/大学/Classes/2026/地球物理数値解析/amano_report/ba.tex" "out/ba.xdv" "ba" 1780219984 2
+  (generated)
+  "out/ba.aux"
+  "out/ba.log"
+  "out/ba.xdv"
+  (rewritten before read)
